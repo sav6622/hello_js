@@ -3,6 +3,7 @@
 //Global consts
 const FREQ = 8000;       
 const BITS_PER_VOICE_SAMPLE = 16;
+const PRECISION = 0.001;
 
 //Local class consts
 const PI = Math.PI;
@@ -48,7 +49,7 @@ class ToneSignal {
     }
 
     change_freq(freq) {                                 //Change the frequency of tone signal
-        if (freq != this.freq_old) {
+        if (Math.abs(freq - this.freq_old) > PRECISION) {
             this.freq_old = this.freq;
             this.freq = freq;
             this.inc_arg = Math.round((freq*TWO_POW_32_DIVIDE_BY_FREQ));
@@ -57,7 +58,7 @@ class ToneSignal {
     }
     
     change_level(level) {                               //Change the level of tone signal
-        if (level != this.nom_level) {
+        if (Math.abs(level - this.nom_level) > PRECISION) {
             this.nom_level = level;
             this.reset();
         }
