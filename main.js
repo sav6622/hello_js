@@ -1,6 +1,6 @@
 'use strict';
 
-const ToneSignal = require('./tone');
+import ToneSignal from "./tone.cjs"
 
 var sin800Hz = new ToneSignal(800, 0.5);
 var sin300Hz = new ToneSignal(400, 0.5);
